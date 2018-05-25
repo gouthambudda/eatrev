@@ -1,0 +1,169 @@
+<?php
+$con = mysqli_connect('localhost','eatrev','youthrocker','EatRev');
+
+?>
+
+<!doctype html>
+<head>
+  <meta charset="UTF-8">
+<title>EatRev</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+@import url(http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+    fieldset, label { margin: 0; padding: 0; }
+    h1 { font-size: 1.5em; margin: 10px; }
+    body {
+      background-color: rgba(0, 134, 244, 0.5);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+        margin: 0;
+    }
+img:hover{
+  cursor: pointer;
+}
+    .shadowfilter {
+    	-webkit-filter: drop-shadow(0px 0px 8px rgba(255,255,255,0.8));
+    	-webkit-transition: all 0.5s linear;
+    	-o-transition: all 0.5s linear;
+    	transition: all 0.5s linear;
+
+    }.shadowfilter:hover {
+    	-webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 0, 0.8));
+    }
+    .header{
+      margin: 0;
+      padding: 0;
+      background-color: rgba(0,0,0,0.3);
+    }
+
+    .shadowfilter {
+    	-webkit-filter: drop-shadow(0px 0px 8px rgba(255,255,255,0.8));
+    	-webkit-transition: all 0.5s linear;
+    	-o-transition: all 0.5s linear;
+    	transition: all 0.5s linear;
+
+    }.shadowfilter:hover {
+    	-webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 0, 0.8));
+    }
+    .header{
+      margin: 0;
+      padding: 0;
+      background-color: rgba(0,0,0,0.3);
+    }
+    .header button{
+      background:  transparent;
+        border: 2px solid white;
+        border-style: none none none solid;
+        color: #ffb311;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: 2px 2px #000000;
+        display: inline-block;
+        font-size: 20px;
+        cursor: pointer;
+        float: right;
+      margin-top: 20px;
+    }
+    .header button:hover {
+        background-color: #aeaeae;
+    }
+    .rating {
+        border: none;
+        float: left;
+    }
+
+    .rating > input { display: none; }
+    .rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating > .half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating > label {
+        color: #ddd;
+        float: right;
+    }
+
+    .rating > input:checked ~ label,
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label { color: #FFD700; cursor: pointer;}
+
+    .rating > input:checked + label:hover,
+    .rating > input:checked ~ label:hover,
+    .rating > label:hover ~ input:checked ~ label,
+    .rating > input:checked ~ label:hover ~ label { color: #FFED85; cursor: pointer;}
+    p{
+      font-size: 20px;
+      width: 500px;
+      margin-top: 5px;
+    }
+</style>
+</head>
+<body>
+  <div class="header">
+  <a href="index.html"><img class="shadowfilter" src="logoe.png" alt="logo" height="100px" width="100px" /> </a>
+    <a href="aboutus.html"><button class="button1">About Us</button></a>
+  <a href="signup.html"><button class="button2">Become A Chef</button></a>
+  <a href="index.html"><button class="button3">Home</button></a>
+  <form target="popup" action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit="popup = window.open('about:blank','popup','width=900,height=600');">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_viewcart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" style="float: right;">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+  </div>
+<table border="0" cellpadding="5">
+<tr>
+<td align="center" valign="center">
+<img src="thali.jpeg" alt="description here" height="180px" min-width=100%/>
+<br />
+<script>
+    $(document).ready(function () {
+        $("#demo1 .stars").click(function () {
+
+            $.post('rating.php',{rate:$(this).val()},function(d){
+                if(d>0)
+                {
+                    alert('You already rated');
+                }else{
+                    alert('Thanks For Rating');
+                }
+            });
+            $(this).attr("checked");
+        });
+    });
+</script>
+<fieldset id='demo1' class="rating">
+    <input class="stars" type="radio" id="star5" name="rating" value="5" />
+    <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+    <input class="stars" type="radio" id="star4" name="rating" value="4" />
+    <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+    <input class="stars" type="radio" id="star3" name="rating" value="3" />
+    <label class = "full" for="star3" title="Meh - 3 stars"></label>
+    <input class="stars" type="radio" id="star2" name="rating" value="2" />
+    <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+    <input class="stars" type="radio" id="star1" name="rating" value="1" />
+    <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+
+</fieldset>
+</td>
+<td valign="top" width= "500px;">
+<P>We all about special Thali and Biryani meals prepared with organic spices and produces.</p>
+</td>
+</tr>
+</table>
+<h1>Thali N Biryani</h1>
+
+</body>
+</html>

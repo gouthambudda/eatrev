@@ -1,0 +1,202 @@
+
+<!doctype html>
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png"  sizes="32x32"href="icon.png">
+<title>EatRev</title>
+<style>
+body {
+  background: url(bg.jpg) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+    margin: 0;
+}
+
+.shadowfilter {
+	-webkit-filter: drop-shadow(0px 0px 8px rgba(255,255,255,0.8));
+	-webkit-transition: all 0.5s linear;
+	-o-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+
+}.shadowfilter:hover {
+	-webkit-filter: drop-shadow(0px 0px 8px rgba(255, 255, 0, 0.8));
+}
+.header{
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0,0,0,0.3);
+}
+.dropdown {
+    display: block;
+	text-align:center;
+	margin:14% auto auto;
+}
+.dropbtn {
+
+    background-color: #ffffff;
+    color: #f44336;
+	border: 4px solid #555555;
+	border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+	 height:50px;
+    width:500px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+	margin-left:40%;
+	width:300px;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+	border: 4px solid #555555;
+	border-radius: 10px;
+}
+.dropdown-content a {
+    color: red;
+    padding: 12px 16px;
+	font-size:20px;
+    text-decoration: none;
+    display: block;
+	border: 1px solid #555555;
+
+}
+.dropdown-content a:hover {
+background-color: #e7e7e7;
+color: blue;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+
+}
+
+.popupPosition{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+}
+#popupWrapper{
+  width: 600px;
+  margin: 70px auto;
+  text-align: left;
+}
+#popupContainer{
+  background-color: white;
+  padding: 20px;
+  border-radius: 4px;
+}
+input{
+  width:200px;
+  height: 20px;
+}
+.button {
+  float: right;
+    background-color: #ffb311;
+    border: 2px solid #aeaeae;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.button:hover {
+   cursor:pointer;
+  	-webkit-filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.3));
+}
+form{
+  margin: 50px;
+}
+a.box{
+    float:right;
+    cursor:pointer;
+    color: #fff;
+    border: 2px solid #ffb311;
+    border-radius: 15px;
+    background: #aeaeae;
+    font-size: 25px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;
+    text-decoration: none;
+}
+iframe{
+  border: 0;
+  height: 30px;
+  margin-left: 150px;
+}
+.header button{
+  background:  transparent;
+    border: 2px solid white;
+    border-style: none none none solid;
+    color: #ffb311;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 2px 2px #000000;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+    float: right;
+  margin-top: 20px;
+}
+.header button:hover {
+    background-color: #aeaeae;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function visible(id){
+      var e = document.getElementById(id);
+      if(e.style.display == 'block')
+      e.style.display = 'none';
+      else {
+        e.style.display = 'block'
+      }
+    }
+</script>
+</head>
+<body onload="visible('popupBox');">
+  <div id="popupBox" class="popupPosition">
+    <div id="popupWrapper">
+      <p style="text-align: right; margin: 0;" ><a class="box" href="javascript:void(0)" onclick="visible('popupBox');">X</a></p>
+      <div id="popupContainer">
+      <form action="subscribe.php" method="post" target="receiver">
+            <h1 style="color: #ffb311">SUBSCRIBE FOR COUPONS</h1>
+              <h3 style="color: #ffb311" for="emailAddress">Email Address:
+              <input type="text" name="email" id="emailAddress" ></h3>
+          <input type="submit" class="button" value="Subscribe" style="width: 120px; height: 40px;" >
+      </form>
+      <iframe name="receiver" id="receiver"></iframe>
+    </div>
+  </div>
+</div>
+<div id="wrapper">
+<div class="header">
+<a href="index.html"><img class="shadowfilter" src="logoe.png" alt="logo" height="100px" width="100px" /> </a>
+  <a href="aboutus.html"><button class="button1">About Us</button></a>
+<a href="trail.php"><button class="button2">Become A Chef</button></a>
+<a href="index.html"><button class="button3">Home</button></a>
+</div>
+  <div class="dropdown">
+  <button class="dropbtn">Please Select Your City &#x21B4;</button>
+  <div class="dropdown-content">
+  <a href="sanfransisco.php">San Fransisco</a>
+    <a href="sanjose.php">San Jose</a>
+    <a href="milpitas.html">Milpitas</a>
+    <a href="fremont.html">Fremont</a>
+	<a href="sanmateo.html">San Mateo</a>
+  </div>
+</div>
+</div>
+</body>
+</html>
